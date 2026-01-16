@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>Prueba Chat Honda Canarias (Agentforce)</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Prueba Chat Honda Canarias</h1>
+    <p>Esta es una página de prueba para el despliegue de Agentforce.</p>
+    <p>El botón de chat aparecerá abajo a la derecha.</p>
+  </div>
+
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+
+        embeddedservice_bootstrap.init(
+          '00DAU00000ImD9j',
+          'Agentforce_Chat_Web_Honda',
+          'https://domingoalonso--devaf.sandbox.my.site.com/ESWAgentforceChatWebHo1767952261597',
+          {
+            scrt2URL: 'https://domingoalonso--devaf.sandbox.my.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    };
+  </script>
+  <script type='text/javascript' src='https://domingoalonso--devaf.sandbox.my.site.com/ESWAgentforceChatWebHo1767952261597/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+</body>
+</html>
