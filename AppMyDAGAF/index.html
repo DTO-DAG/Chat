@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover">
   <title>Prueba Chat App myDAG (Agentforce)</title>
 
   <style>
@@ -32,26 +32,31 @@
   </div>
 
   <script type='text/javascript'>
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+    (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://domingoalonso.my.site.com/ESWAgentforceChatAppmy1770731738388/assets/js/bootstrap.min.js';
+       
+        script.onload = function() {
+            try {
+                window.embeddedservice_bootstrap.settings.language = 'es';
+                window.embeddedservice_bootstrap.init(
+                    '00D1i000000V9Lj', 
+                    'Agentforce_Chat_App_myDAG',
+                    'https://domingoalonso.my.site.com/ESWAgentforceChatAppmy1770731738388',
+                    {
+                        scrt2URL: 'https://domingoalonso.my.salesforce-scrt.com'
+                    }
+                );
+            } catch (err) {
+                console.error('Error inicializando Agentforce:', err);
+            }
+        };
 
-        embeddedservice_bootstrap.init(
-          '00D1i000000V9Lj',
-          'Agentforce_Chat_App_myDAG',
-          'https://domingoalonso.my.site.com/ESWAgentforceChatAppmy1770731738388',
-          {
-            scrt2URL: 'https://domingoalonso.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    };
+        document.head.appendChild(script);
+    })();
   </script>
-  <script type='text/javascript'
-    src='https://domingoalonso.my.site.com/ESWAgentforceChatAppmy1770731738388/assets/js/bootstrap.min.js'
-    onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 
