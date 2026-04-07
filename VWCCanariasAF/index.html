@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <title>Prueba Chat VW Comerciales Canarias (Agentforce)</title>
+  <title>Agentforce VW Comerciales (Full Screen)</title>
 
   <style>
-    /* 1. RESET: Eliminamos márgenes y fijamos el fondo al 100% de la pantalla */
+    /* 1. Limpiamos el fondo de la web */
     body, html {
       margin: 0;
       padding: 0;
       width: 100vw;
       height: 100vh;
-      overflow: hidden; /* Evita cualquier scroll fuera del chat */
+      overflow: hidden; 
       background-color: #ffffff; 
-      font-family: Arial, sans-serif;
     }
 
-    /* Ocultamos el texto de fondo */
     .container {
       display: none;
     }
 
-    /* 2. OCULTAMOS EL BOTÓN FLOTANTE ORIGINAL */
-    .embeddedServiceHelpButton {
-      display: none !important; 
-    }
-
-    /* 3. EXPANDIMOS EL WIDGET AL 100% */
-    .embeddedServiceSidebar.layout-docked .dockableContainer,
-    iframe[title="Embedded Messaging"] {
+    /* 2. EL HACK DEFINITIVO PARA EL TAMAÑO */
+    /* Como esta web solo aloja el chat, forzamos a que cualquier iFrame que inyecte 
+       Salesforce ocupe toda la pantalla de forma absoluta y pase por encima de todo. */
+    iframe {
       width: 100vw !important;
       height: 100vh !important;
-      max-width: 100% !important;
-      max-height: 100% !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
       bottom: 0 !important;
       right: 0 !important;
-      border-radius: 0 !important;
       border: none !important;
+      z-index: 999999 !important; /* Aseguramos que esté por delante de cualquier cosa */
+      border-radius: 0 !important;
     }
   </style>
 </head>
-
 <body>
-  
+
   <div class="container">
-    <h1>Prueba Chat VW Comerciales Canarias</h1>
-    <p>Cargando Agentforce a pantalla completa...</p>
+    <h1>Cargando Agentforce...</h1>
   </div>
 
   <script type='text/javascript'>
+    // 1. EVENTO DE AUTO-APERTURA (EL PRECHAT SALDRÁ PRIMERO)
+    // Lo colocamos antes del init para asegurarnos de que escucha el evento a tiempo.
+    window.addEventListener("onEmbeddedMessagingReady", () => {
+        console.log("El motor de Salesforce está listo. Lanzando el prechat/chat...");
+        try {
+            embeddedservice_bootstrap.utilAPI.launchChat()
+                .then(() => console.log("Chat desplegado correctamente."))
+                .catch((error) => console.error("Error al desplegar el chat:", error));
+        } catch (error) {
+            console.error("Fallo general al intentar forzar launchChat:", error);
+        }
+    });
+
+    // 2. CONFIGURACIÓN DEL SNIPPET DE VW COMERCIALES
     function initEmbeddedMessaging() {
       try {
-        embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+        embeddedservice_bootstrap.settings.language = 'es'; 
+        
+        // LA MAGIA DE LA API: Ocultamos el botón flotante ("la bola") desde el propio motor de Salesforce.
+        // Esto evita que parpadee o aparezca en pantalla.
+        embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
 
         embeddedservice_bootstrap.init(
           '00D1i000000V9Lj',
@@ -68,23 +81,8 @@
       }
     };
   </script>
-  <script type='text/javascript'
-    src='https://domingoalonso.my.site.com/ESWAgentforceChatWebVW1770139831228/assets/js/bootstrap.min.js'
-    onload='initEmbeddedMessaging()'></script>
-
-  <script>
-    window.addEventListener("onEmbeddedMessagingReady", () => {
-        console.log("El entorno de VW Comerciales está listo. Desplegando el prechat...");
-        try {
-            // Este comando abrirá el contenedor. Al estar configurado un prechat, 
-            // Salesforce mostrará el formulario antes de conectar con Agentforce.
-            embeddedservice_bootstrap.utilAPI.launchChat();
-        } catch (error) {
-            console.error("No se pudo forzar la apertura:", error);
-        }
-    });
-  </script>
+  
+  <script type='text/javascript' src='https://domingoalonso.my.site.com/ESWAgentforceChatWebVW1770139831228/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
 </body>
-
 </html>
