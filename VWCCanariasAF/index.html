@@ -46,43 +46,25 @@
   </div>
 
   <script type='text/javascript'>
-    // 1. EVENTO DE AUTO-APERTURA (EL PRECHAT SALDRÁ PRIMERO)
-    // Lo colocamos antes del init para asegurarnos de que escucha el evento a tiempo.
-    window.addEventListener("onEmbeddedMessagingReady", () => {
-        console.log("El motor de Salesforce está listo. Lanzando el prechat/chat...");
-        try {
-            embeddedservice_bootstrap.utilAPI.launchChat()
-                .then(() => console.log("Chat desplegado correctamente."))
-                .catch((error) => console.error("Error al desplegar el chat:", error));
-        } catch (error) {
-            console.error("Fallo general al intentar forzar launchChat:", error);
-        }
-    });
-
-    // 2. CONFIGURACIÓN DEL SNIPPET DE VW COMERCIALES
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'es'; 
-        
-        // LA MAGIA DE LA API: Ocultamos el botón flotante ("la bola") desde el propio motor de Salesforce.
-        // Esto evita que parpadee o aparezca en pantalla.
-        embeddedservice_bootstrap.settings.hideChatButtonOnLoad = true;
-
-        embeddedservice_bootstrap.init(
-          '00D1i000000V9Lj',
-          'Agentforce_Chat_Web_VWC',
-          'https://domingoalonso.my.site.com/ESWAgentforceChatWebVW1770139831228',
-          {
-            scrt2URL: 'https://domingoalonso.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    };
-  </script>
+  	function initEmbeddedMessaging() {
+  		try {
+  			embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
   
-  <script type='text/javascript' src='https://domingoalonso.my.site.com/ESWAgentforceChatWebVW1770139831228/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  			embeddedservice_bootstrap.init(
+  				'00DAU00000ImD9j',
+  				'Agentforce_Chat_Web_VWC',
+  				'https://domingoalonso--devaf.sandbox.my.site.com/ESWAgentforceChatWebVW1767952965941',
+  				{
+  					scrt2URL: 'https://domingoalonso--devaf.sandbox.my.salesforce-scrt.com'
+  				}
+  			);
+  		} catch (err) {
+  			console.error('Error loading Embedded Messaging: ', err);
+  		}
+  	};
+  </script>
+  <script type='text/javascript' src='https://domingoalonso--devaf.sandbox.my.site.com/ESWAgentforceChatWebVW1767952965941/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 </html>
