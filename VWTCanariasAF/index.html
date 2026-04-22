@@ -3,52 +3,32 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.0, user-scalable=no" />
-  <title>Prueba Chat VW Turismos Canarias (Agentforce)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <title>Prueba Chat VWT Canarias (Agentforce)</title>
 
   <style>
-    /* 1. RESET: Quitamos márgenes y forzamos a que el fondo ocupe el 100% de la ventana */
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden; /* Evita que haya scroll de fondo */
-      background-color: #ffffff; /* Puedes poner el color corporativo de VW aquí */
+    body {
       font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
     }
 
-    /* Ocultamos tu contenedor original porque el chat lo va a tapar entero */
     .container {
-      display: none;
-    }
-
-    /* 2. OCULTAMOS EL BOTÓN FLOTANTE (GLOBO) */
-    .embeddedServiceHelpButton {
-      display: none !important; 
-    }
-
-    /* 3. MAGIA CSS: Forzamos las dimensiones al 100% */
-    /* Apuntamos tanto a las clases clásicas como a los iframes de la nueva versión MIAW */
-    .embeddedServiceSidebar.layout-docked .dockableContainer,
-    iframe[title="Embedded Messaging"] {
-      width: 100vw !important;
-      height: 100vh !important;
-      max-width: 100% !important;
-      max-height: 100% !important;
-      bottom: 0 !important;
-      right: 0 !important;
-      border-radius: 0 !important;
-      border: none !important;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
 
 <body>
-  
   <div class="container">
-    <h1>Prueba Chat VW Turismos Canarias</h1>
-    <p>Cargando Agentforce a pantalla completa...</p>
+    <h1>Prueba Chat VWT Canarias</h1>
+    <p>Esta es una página de prueba para el despliegue de Agentforce.</p>
+    <p>El botón de chat aparecerá abajo a la derecha.</p>
   </div>
 
   <script type='text/javascript'>
