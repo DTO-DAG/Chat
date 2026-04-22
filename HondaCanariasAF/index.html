@@ -32,26 +32,25 @@
   </div>
 
   <script type='text/javascript'>
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
-
-        embeddedservice_bootstrap.init(
-          '00D1i000000V9Lj',
-          'Agentforce_Chat_Web_Honda',
-          'https://domingoalonso.my.site.com/ESWAgentforceChatWebHo1770139148607',
-          {
-            scrt2URL: 'https://domingoalonso.my.salesforce-scrt.com'
-          }
-        );
-      } catch (err) {
-        console.error('Error loading Embedded Messaging: ', err);
-      }
-    };
+  	function initEmbeddedMessaging() {
+  		try {
+  			embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+  
+  			embeddedservice_bootstrap.init(
+  				'00DAU00000ImD9j',
+  				'Agentforce_Chat_Web_Honda',
+  				'https://domingoalonso--devaf.sandbox.my.site.com/ESWAgentforceChatWebHo1767952261597',
+  				{
+  					scrt2URL: 'https://domingoalonso--devaf.sandbox.my.salesforce-scrt.com'
+  				}
+  			);
+  		} catch (err) {
+  			console.error('Error loading Embedded Messaging: ', err);
+  		}
+  	};
   </script>
-  <script type='text/javascript'
-    src='https://domingoalonso.my.site.com/ESWAgentforceChatWebHo1770139148607/assets/js/bootstrap.min.js'
-    onload='initEmbeddedMessaging()'></script>
+  <script type='text/javascript' src='https://domingoalonso--devaf.sandbox.my.site.com/ESWAgentforceChatWebHo1767952261597/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 </body>
 
